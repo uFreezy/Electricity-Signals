@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="~{fragments/layout :: head}"></head>
+<body>
+<nav th:insert="~{fragments/layout :: navbar}"></nav>
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1 col-md-offset-5">
+            <h3>Login</h3>
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+            </ul>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Email" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Forget Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

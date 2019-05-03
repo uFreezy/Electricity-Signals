@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="~{fragments/layout :: head}"></head>
+<body>
+<nav th:insert="~{fragments/layout :: navbar}"></nav>
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1 col-md-offset-5">
+            <h3>Registration</h3>
+            <form action="#" method="post" th:action="@{/register}" th:object="${userForm}">
+                <ul class="error-list">
+                    <li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+                </ul>
+                <div class="form-group">
+                    <input type="text" th:field="*{firstName}" class="form-control" placeholder="First Name" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{lastName}" class="form-control" placeholder="Last Name" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{username}" class="form-control" placeholder="Username" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" th:field="*{password}" class="form-control" placeholder="Password" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" th:field="*{passwordConfirm}" class="form-control" placeholder="Repeat Password" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Register" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Already Have an Account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

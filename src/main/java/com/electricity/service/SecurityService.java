@@ -1,4 +1,4 @@
-package com.example.service;
+package com.electricity.service;
 
 public interface SecurityService {
     String findLoggedInUsername();

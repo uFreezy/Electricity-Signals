@@ -1,10 +1,9 @@
-package com.example.controller;
+package com.electricity.controller;
 
-import com.example.model.User;
-import com.example.service.SecurityService;
-import com.example.service.UserService;
-import com.example.validator.UserValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.electricity.model.User;
+import com.electricity.service.SecurityService;
+import com.electricity.service.UserService;
+import com.electricity.validator.UserValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,15 +12,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UserController  extends BaseController{
-    @Autowired
-    private UserService userService;
+public class UserController extends BaseController {
+    private final UserService userService;
 
-    @Autowired
-    private SecurityService securityService;
+    private final SecurityService securityService;
 
-    @Autowired
-    private UserValidator userValidator;
+    private final UserValidator userValidator;
+
+    public UserController(UserService userService, SecurityService securityService, UserValidator userValidator) {
+        this.userService = userService;
+        this.securityService = securityService;
+        this.userValidator = userValidator;
+    }
 
     @GetMapping("/register")
     public String registration(Model model) {
@@ -42,7 +44,7 @@ public class UserController  extends BaseController{
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+        return "redirect:/";
     }
 
     @GetMapping("/login")
@@ -56,8 +58,4 @@ public class UserController  extends BaseController{
         return "login";
     }
 
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
-    }
 }

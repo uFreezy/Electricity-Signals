@@ -1,8 +1,8 @@
-package com.example.service;
+package com.electricity.service;
 
-import com.example.data.repositories.UserRepository;
-import com.example.model.Role;
-import com.example.model.User;
+import com.electricity.data.repositories.UserRepository;
+import com.electricity.model.Role;
+import com.electricity.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null) throw new UsernameNotFoundException(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.getRoles()){
+        for (Role role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 

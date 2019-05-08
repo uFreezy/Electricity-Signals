@@ -1,7 +1,7 @@
-package com.example.validator;
+package com.electricity.validator;
 
-import com.example.model.User;
-import com.example.service.UserService;
+import com.electricity.model.User;
+import com.electricity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -1,6 +1,6 @@
-package com.example.data.repositories;
+package com.electricity.data.repositories;
 
-import com.example.model.User;
+import com.electricity.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,9 +1,7 @@
-package com.example.model;
-
+package com.electricity.model;
 
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,9 +22,16 @@ public class User {
     @Transient
     private String passwordConfirm;
 
-   // @OneToMany
-   // private List<Signal> signals;
+    // @OneToMany
+    // private List<Signal> signals;
 
+    /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))*/
     @ManyToMany
     private Set<Role> roles;
 
@@ -75,7 +80,7 @@ public class User {
         return passwordConfirm;
     }
 
-   public void setPasswordConfirm(String passwordConfirm) {
+    public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
     }
 
@@ -93,6 +98,18 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + username + '\'' +
+                ", password='" + "*********" + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
 }

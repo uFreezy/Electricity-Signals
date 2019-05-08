@@ -1,5 +1,11 @@
 {
   "name": "electricity-signals",
   "description": "Sample description.",
-  "keywords": ["java", "spring", "spring-boot", "springboot", "gradle"]
+  "keywords": [
+    "java",
+    "spring",
+    "spring-boot",
+    "springboot",
+    "gradle"
+  ]
 }

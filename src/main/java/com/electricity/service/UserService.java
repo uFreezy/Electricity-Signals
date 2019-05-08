@@ -1,6 +1,6 @@
-package com.example.service;
+package com.electricity.service;
 
-import com.example.model.User;
+import com.electricity.model.User;
 
 public interface UserService {
     void save(User user);

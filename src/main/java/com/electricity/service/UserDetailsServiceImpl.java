@@ -3,7 +3,6 @@ package com.electricity.service;
 import com.electricity.data.repositories.UserRepository;
 import com.electricity.model.Role;
 import com.electricity.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,10 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
+@Service("userDetailsService")
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -33,4 +36,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
+
 }

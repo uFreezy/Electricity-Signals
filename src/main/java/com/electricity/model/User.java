@@ -1,11 +1,10 @@
 package com.electricity.model;
 
-
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +21,8 @@ public class User {
     @Transient
     private String passwordConfirm;
 
-    // @OneToMany
-    // private List<Signal> signals;
+    @OneToMany(mappedBy = "owner")
+    private Set<Signal> signals;
 
     /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -84,13 +83,13 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    /*public List<Signal> getSignals() {
+    public Set<Signal> getSignals() {
         return signals;
     }
 
-    public void setSignals(List<Signal> signals) {
+    public void setSignals(Set<Signal> signals) {
         this.signals = signals;
-    }*/
+    }
 
     public Set<Role> getRoles() {
         return roles;

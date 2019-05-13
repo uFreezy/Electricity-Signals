@@ -44,7 +44,7 @@ public class UserController extends BaseController {
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/";
+        return "redirect:/user-signals";
     }
 
     @GetMapping("/login")

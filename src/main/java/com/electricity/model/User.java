@@ -1,6 +1,7 @@
 package com.electricity.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,15 +25,25 @@ public class User {
     @OneToMany(mappedBy = "owner")
     private Set<Signal> signals;
 
-    /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))*/
     @ManyToMany
     private Set<Role> roles;
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String username, String password, String passwordConfirm, Set<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.passwordConfirm = passwordConfirm;
+        this.roles = roles;
+    }
+
+    public User(String firstName, String lastName, String username, String password, String passwordConfirm) {
+        this(firstName, lastName, username, password, passwordConfirm, new HashSet<>());
+    }
+
 
     public Long getId() {
         return id;

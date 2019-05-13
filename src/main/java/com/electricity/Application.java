@@ -1,6 +1,7 @@
 package com.electricity;
 
 import com.electricity.data.repositories.RoleRepository;
+import com.electricity.service.SignalService;
 import com.electricity.service.UserService;
 import com.electricity.utils.Seeder;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +17,7 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner seedRunner(RoleRepository roleRepo, UserService userService) {
-        return (args) -> Seeder.run(roleRepo, userService);
+    public CommandLineRunner seedRunner(RoleRepository roleRepo, UserService userService, SignalService signalService) {
+        return (args) -> Seeder.run(roleRepo, userService, signalService);
     }
 }

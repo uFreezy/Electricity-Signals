@@ -1,12 +1,17 @@
 package com.electricity.service;
 
 import com.electricity.model.Signal;
-import com.electricity.model.User;
 
 import java.util.List;
 
 public interface SignalService {
     void save(Signal signal);
 
-    List<Signal> findByOwner(User user);
+    Signal findById(Long id);
+
+    List<Signal> findByOwnerUsername(String username);
+
+    List<Signal> findAllUnresolved();
+
+    boolean any();
 }

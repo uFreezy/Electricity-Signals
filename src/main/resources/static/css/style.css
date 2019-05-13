@@ -37,8 +37,9 @@
 }
 
 .btnSubmit {
+    float: right;
     width: 50%;
-    border-radius: 1rem;
+    border-radius: 3px;
     padding: 1.5%;
     border: none;
     cursor: pointer;
@@ -47,7 +48,7 @@
 .login-form-1 .btnSubmit {
     font-weight: 600;
     color: #fff;
-    background-color: #0062cc;
+    background-color: #009688 !important;
 }
 
 
@@ -59,4 +60,8 @@
 
 .error-list li {
     color: red;
+}
+
+.badge {
+    font-size: 100%;
 }

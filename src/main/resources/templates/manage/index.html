@@ -2,7 +2,50 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:insert="~{/fragments/layout :: head}"></head>
 <body>
-<nav th:insert="~{/fragments/layout :: navbar}"></nav>
-manage
+<nav th:insert="~{fragments/layout :: navbar}"></nav>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-striped table-bordered" id="user-signal" style="width:100%">
+            <thead>
+            <tr>
+                <th>Address</th>
+                <th>Description</th>
+                <th>Submitted On</th>
+                <th>Mark as Completed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="signal : ${signals}">
+                <td th:text="${signal.address}"></td>
+                <td th:text="${signal.description}"></td>
+                <td th:text="${signal.dateOnSubmition}"></td>
+                <td>
+                    <form method="POST" th:action="@{/manage/resolve(id=${signal.id})}">
+                        <button class="badge badge-success" name="submit" type="submit" value="value">
+                            Mark As Completed
+                        </button>
+                    </form>
+
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
+<footer th:insert="~{fragments/layout :: footer}"></footer>
+<script>
+    $(document).ready(function () {
+        $('#user-signal').DataTable({
+            "bJQueryUI": true,
+            "bSort": false,
+            "bPaginate": true,
+            "sPaginationType": "full_numbers",
+            "iDisplayLength": 25
+        });
+
+    });
+</script>
 </html>

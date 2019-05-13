@@ -15,6 +15,8 @@ public class Signal {
 
     private String description;
 
+    private Date dateOnSubmition;
+
     private boolean isCompleted;
 
     private Date dateOnCompletion;
@@ -22,6 +24,18 @@ public class Signal {
     @ManyToOne
     @JoinColumn(name = "sigg_id", nullable = false)
     private User owner;
+
+    public Signal() {
+    }
+
+    public Signal(String address, String description, Date dateOnSubmition, boolean isCompleted, Date dateOnCompletion, User owner) {
+        this.address = address;
+        this.description = description;
+        this.dateOnSubmition = dateOnSubmition;
+        this.isCompleted = isCompleted;
+        this.dateOnCompletion = dateOnCompletion;
+        this.owner = owner;
+    }
 
     public Long getId() {
         return id;
@@ -47,11 +61,19 @@ public class Signal {
         this.description = description;
     }
 
-    public boolean isCompleted() {
+    public Date getDateOnSubmition() {
+        return dateOnSubmition;
+    }
+
+    public void setDateOnSubmition(Date dateOnSubmition) {
+        this.dateOnSubmition = dateOnSubmition;
+    }
+
+    public boolean getIsCompleted() {
         return isCompleted;
     }
 
-    public void setCompleted(boolean completed) {
+    public void setIsCompleted(boolean completed) {
         isCompleted = completed;
     }
 

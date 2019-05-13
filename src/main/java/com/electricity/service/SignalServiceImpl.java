@@ -2,7 +2,6 @@ package com.electricity.service;
 
 import com.electricity.data.repositories.SignalRepository;
 import com.electricity.model.Signal;
-import com.electricity.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,14 +14,27 @@ public class SignalServiceImpl implements SignalService {
         this.signalRepository = signalRepository;
     }
 
-
     @Override
     public void save(Signal signal) {
         this.signalRepository.save(signal);
     }
 
     @Override
-    public List<Signal> findByOwner(User user) {
-        return this.signalRepository.findByOwner(user);
+    public Signal findById(Long id) {
+        return this.signalRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Signal> findByOwnerUsername(String username) {
+        return this.signalRepository.findByOwnerUsername(username);
+    }
+
+    @Override
+    public List<Signal> findAllUnresolved() {
+        return this.signalRepository.findByIsCompleted(false);
+    }
+
+    public boolean any() {
+        return this.signalRepository.count() > 0;
     }
 }

@@ -1,3 +1,26 @@
+html {
+    height: 100% !important;
+}
+
+body {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+    -webkit-flex: 1 0 auto;
+    min-height: 200px;
+}
+
+#myFooter {
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+}
+
 
 .hm-gradient {
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
@@ -38,7 +61,7 @@
 
 .btnSubmit {
     float: right;
-    width: 50%;
+    width: 100%;
     border-radius: 3px;
     padding: 1.5%;
     border: none;
@@ -58,10 +81,19 @@
     text-decoration: none;
 }
 
+.form-link {
+    text-align: center;
+    margin-bottom: 0.5rem !important;
+}
+
 .error-list li {
     color: red;
 }
 
 .badge {
     font-size: 100%;
+}
+
+#user-signal_wrapper {
+    width: 100%;
 }

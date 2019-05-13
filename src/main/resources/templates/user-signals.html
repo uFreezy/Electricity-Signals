@@ -36,16 +36,10 @@
     </div>
 </div>
 </body>
-<footer th:insert="~{fragments/layout :: footer}"></footer>
+<div th:insert="~{fragments/layout :: footer}"></div>
 <script>
     $(document).ready(function () {
-        $('#user-signal').DataTable({
-            "bJQueryUI": true,
-            "bSort": false,
-            "bPaginate": true,
-            "sPaginationType": "full_numbers",
-            "iDisplayLength": 25
-        });
+        $('#user-signal').DataTable();
 
     });
 </script>

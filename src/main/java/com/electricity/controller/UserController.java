@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UserController extends BaseController {
+public class UserController {
     private final UserService userService;
 
     private final SecurityService securityService;

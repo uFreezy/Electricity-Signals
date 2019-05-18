@@ -2,11 +2,13 @@ package com.electricity.service;
 
 import com.electricity.data.repositories.RoleRepository;
 import com.electricity.data.repositories.UserRepository;
+import com.electricity.model.Role;
 import com.electricity.model.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,6 +32,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public List<User> findByRoles(List<Role> roles) {
+        return userRepository.findByRoles(roles);
     }
 
     @Override

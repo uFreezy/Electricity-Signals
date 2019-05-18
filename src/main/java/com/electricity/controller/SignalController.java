@@ -59,7 +59,6 @@ public class SignalController {
 
     @PostMapping("/create-signal")
     public String createSignal(@ModelAttribute("signalForm") Signal signalForm, BindingResult bindingResult) {
-
         signalValidator.validate(signalForm, bindingResult);
 
         if (bindingResult.hasErrors()) return "create-signal";

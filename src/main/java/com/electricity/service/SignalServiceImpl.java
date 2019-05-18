@@ -34,7 +34,18 @@ public class SignalServiceImpl implements SignalService {
         return this.signalRepository.findByIsCompleted(false);
     }
 
+    @Override
+    public List<Signal> findAllResolved() {
+        return this.signalRepository.findByIsCompleted(true);
+    }
+
+
     public boolean any() {
         return this.signalRepository.count() > 0;
+    }
+
+    @Override
+    public long count() {
+        return this.signalRepository.count();
     }
 }

@@ -13,5 +13,9 @@ public interface SignalService {
 
     List<Signal> findAllUnresolved();
 
+    List<Signal> findAllResolved();
+
     boolean any();
+
+    long count();
 }

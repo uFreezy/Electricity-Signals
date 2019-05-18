@@ -25,6 +25,10 @@ public class Signal {
     @JoinColumn(name = "sigg_id", nullable = false)
     private User owner;
 
+    @ManyToOne
+    @JoinColumn(name = "slv_id", nullable = true)
+    private User solver;
+
     public Signal() {
     }
 
@@ -91,5 +95,13 @@ public class Signal {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public User getSolver() {
+        return solver;
+    }
+
+    public void setSolver(User solver) {
+        this.solver = solver;
     }
 }

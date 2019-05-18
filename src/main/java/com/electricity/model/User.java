@@ -25,6 +25,9 @@ public class User {
     @OneToMany(mappedBy = "owner")
     private Set<Signal> signals;
 
+    @OneToMany(mappedBy = "solver")
+    private Set<Signal> solvedSignals;
+
     @ManyToMany
     private Set<Role> roles;
 
@@ -101,6 +104,15 @@ public class User {
     public void setSignals(Set<Signal> signals) {
         this.signals = signals;
     }
+
+    public Set<Signal> getSolvedSignals() {
+        return solvedSignals;
+    }
+
+    public void setSolvedSignals(Set<Signal> solvedSignals) {
+        this.solvedSignals = solvedSignals;
+    }
+
 
     public Set<Role> getRoles() {
         return roles;

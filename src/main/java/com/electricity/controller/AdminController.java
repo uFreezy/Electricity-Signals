@@ -28,10 +28,8 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-
     @GetMapping("/admin/index")
     public String index(Model model) {
-
         List<DirectorSignalDto> signalInfo = new ArrayList<>();
         List<DirectorServicemanDto> servicemanInfo = new ArrayList<>();
 
@@ -40,15 +38,13 @@ public class AdminController {
                 (int) ((s.getDateOnCompletion().getTime() - s.getDateOnSubmition().getTime())
                         / (1000 * 60 * 60 * 24)))));
 
-        userService.findByRoles(Collections.singletonList(roleService.findByName("Service"))).forEach(u -> {
-            servicemanInfo.add(new DirectorServicemanDto(u.getUsername(), u.getSolvedSignals().size()));
-        });
+        userService.findByRoles(Collections.singletonList(roleService.findByName("Service")))
+                .forEach(u -> servicemanInfo.add(new DirectorServicemanDto(u.getUsername(), u.getSolvedSignals().size())));
 
 
         DirectorSignalGroupDto info = new DirectorSignalGroupDto(((int) this.signalService.count()), signalInfo, servicemanInfo);
 
         model.addAttribute("info", info);
-
 
         return "admin/index";
     }

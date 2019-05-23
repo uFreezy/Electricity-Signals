@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -35,7 +36,6 @@ public class SignalController {
     public String userSignals(Model model) {
         String loggedUsername = securityService.findLoggedInUsername();
 
-
         List<Signal> signals = signalService
                 .findByOwnerUsername(loggedUsername);
 
@@ -49,7 +49,6 @@ public class SignalController {
     }
 
 
-    // TODO: Add values to Signal() if there are any in model
     @GetMapping("/create-signal")
     public String createSignal(Model model) {
         model.addAttribute("signalForm", new Signal());
@@ -63,6 +62,7 @@ public class SignalController {
 
         if (bindingResult.hasErrors()) return "create-signal";
 
+        signalForm.setDateOnSubmition(new Date());
         signalForm.setOwner(userService.findByUsername(securityService.findLoggedInUsername()));
         signalService.save(signalForm);
 
